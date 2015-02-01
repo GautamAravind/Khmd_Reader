@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
     <color name="primaryColor">#724987</color>
     <color name="primaryColorDark">#6A1B9A</color>
-    <color name="navDrawer">#32908F</color>
+    <color name="navDrawer">#80724987</color>
     <color name="accentColor">#00E676</color>
     <color name="textColor">#F57C00</color>
 </resources>
