@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/KhmdReader0.x.iml" filepath="$PROJECT_DIR$/KhmdReader0.x.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Khmd_Reader.iml" filepath="$PROJECT_DIR$/Khmd_Reader.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

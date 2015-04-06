@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:alpha="50"
-    android:background="@color/navDrawer"
+    android:background="@color/primaryColorDark"
     tools:context="com.skch.khmd.khmdreader0x.NavigationDrawerFragment">
 
 
@@ -11,7 +11,7 @@
         android:id="@+id/container_drawer_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/navDrawer">
+        android:background="@color/primaryColorDark">
 
         <ImageView
             android:layout_width="@dimen/nav_drawer_width"

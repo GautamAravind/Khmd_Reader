@@ -24,19 +24,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|top"
                 android:layout_marginTop="67dp"
                 android:text="@string/hello_world"
-                android:textColor="@color/textColor"
-                android:textStyle="bold|italic"
-                android:layout_gravity="center_horizontal|top" />
+                android:textColor="@color/primaryColorText"
+                android:textStyle="bold|italic" />
 
             <Button
+                android:id="@+id/btn_blog_list"
                 android:layout_width="162dp"
                 android:layout_height="74dp"
-                android:text="Articles"
-                android:id="@+id/btn_blog_list"
+                android:layout_gravity="center"
                 android:onClick="showArticles"
-                android:layout_gravity="center" />
+                android:text="Articles" />
 
         </FrameLayout>
 

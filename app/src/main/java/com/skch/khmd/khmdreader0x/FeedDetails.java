@@ -1,37 +1,44 @@
 package com.skch.khmd.khmdreader0x;
 
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.app.Activity;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.skch.khmd.khmdreader0x.asynctaask.ImageDownloaderTask;
+
 import com.skch.khmd.khmdreader0x.model.FeedItem;
 
 
 public class FeedDetails extends ActionBarActivity {
+                
+    /*
+    Started from ArticleList.java 
+                        -> (AsyncTask) DownLoadFilesTask().execute(url)
+                        -> onPostExecute();
+                        -> parseJson(json);
+                        -> updateList(); 
+    */
 
     private Toolbar toolbar;
     private FeedItem feed;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed_details);
         feed = (FeedItem) this.getIntent().getSerializableExtra("feed");
+        // Gets intent from ArticleList.java -> updateList();
 
-        if (null != feed) {
+        if (feed != null) {
             ImageView thumb = (ImageView) findViewById(R.id.featuredImg);
-            new ImageDownloaderTask(thumb).execute(feed.getAttachmentUrl());
+            //new ImageDownloaderTask(thumb).execute(feed.getAttachmentUrl());
+            // AsyncTask to download image AFTER it opens FeedDetails and set in top bar
 
             TextView title = (TextView) findViewById(R.id.title);
             title.setText(feed.getTitle());
@@ -66,7 +73,7 @@ public class FeedDetails extends ActionBarActivity {
             case R.id.menu_view:
                 Intent intent = new Intent(FeedDetails.this, Webview.class);
                 intent.putExtra("url", feed.getUrl());
-                intent.putExtra("title",feed.getTitle());
+                intent.putExtra("title", feed.getTitle());
                 startActivity(intent);
 
                 return true;
@@ -84,3 +91,9 @@ public class FeedDetails extends ActionBarActivity {
 
     }
 }
+
+/** / To Do                                                                            /**/
+/** / Change size of image view to display properly /**/
+/** / Remove title text view from below image /**/
+/** / Edit Thumbnail Logic : If thumbnail found, display /**/
+/** /                        Else set visibility of image view to GONE    /**/
