@@ -2,7 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:alpha="50"
     android:background="@color/primaryColorDark"
     tools:context="com.skch.khmd.khmdreader0x.NavigationDrawerFragment">
 
@@ -21,14 +20,58 @@
 
     </LinearLayout>
 
-
-    <ListView
-        android:id="@+id/NavList"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_height="80sp"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/container_drawer_image" />
+        android:layout_below="@+id/container_drawer_image"
+        android:background="@color/primaryColorDark"
+        android:text="The KHMD Blog"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="80sp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/button1"
+        android:background="@color/primaryColorDark"
+        android:text="Some Other Blog"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="80sp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/button2"
+        android:background="@color/primaryColorDark"
+        android:text="Contact Us"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="80sp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/button3"
+        android:background="@color/primaryColorDark"
+        android:text="Settings"
+        android:textSize="20sp" />
 
 
 </RelativeLayout>
