@@ -12,17 +12,6 @@
         tools:context="com.skch.khmd.khmdreader0x.MainActivity">
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/app_bar"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="67dp"
-            android:text="@string/hello_world"
-            android:textColor="@color/primaryColorText"
-            android:textStyle="bold|italic" />
     </RelativeLayout>
 
     <fragment

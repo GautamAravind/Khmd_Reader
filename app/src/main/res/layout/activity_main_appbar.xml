@@ -27,7 +27,7 @@
                 android:layout_gravity="center_horizontal|top"
                 android:layout_marginTop="67dp"
                 android:text="@string/hello_world"
-                android:textColor="@color/primaryColorText"
+                android:textColor="@color/articleText"
                 android:textStyle="bold|italic" />
 
             <Button

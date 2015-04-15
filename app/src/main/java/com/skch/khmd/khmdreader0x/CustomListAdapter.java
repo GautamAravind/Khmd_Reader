@@ -5,10 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.NetworkImageView;
 import com.skch.khmd.khmdreader0x.model.FeedItem;
 
 import java.util.ArrayList;
@@ -47,7 +47,7 @@ public class CustomListAdapter extends BaseAdapter {
             holder = new ViewHolder();
             holder.headlineView = (TextView) convertView.findViewById(R.id.title);
             holder.authorView = (TextView) convertView.findViewById(R.id.author);
-            holder.imageView = (NetworkImageView) convertView.findViewById(R.id.thumbImage);
+            holder.imageView = (ImageView) convertView.findViewById(R.id.thumbImage);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -56,28 +56,31 @@ public class CustomListAdapter extends BaseAdapter {
         FeedItem newsItem = (FeedItem) listData.get(position);
         holder.headlineView.setText(newsItem.getTitle());
         holder.authorView.setText(newsItem.getAuthor());
+        //holder.imageView.setDefaultImageResId(R.drawable.khmd_logo);
 
-        /*
-            if (holder.imageView != null) {
-                new ImageDownloaderTask(holder.imageView).execute(newsItem.getAttachmentUrl());
-            }
-        */
-        imageDownloaderTask(newsItem.getAttachmentUrl(), holder.imageView);
+        if (newsItem.getAttachmentUrl() != null)
+            imageDownloaderTask(newsItem.getAttachmentUrl(), holder.imageView);
+
 
         return convertView;
     }
 
-    void imageDownloaderTask(String imageUrl, NetworkImageView image) {
-        ImageLoader loader = VolleySingleton.getInstance().getImageLoader();
+    void imageDownloaderTask(String imageUrl, ImageView image) {
+        //ImageLoader loader = VolleySingleton.getInstance().getImageLoader();
 
-        image.setImageUrl(imageUrl, loader);
+        ImageLoader loader = new ImageLoader(VolleySingleton.getInstance().getRequestQueue(), new LruBitmapCache(
+                LruBitmapCache.getCacheSize(MyApplication.getInstance())));
+
+        loader.get(imageUrl, ImageLoader.getImageListener(image,
+                R.drawable.khmd_logo, R.drawable.khmd_logo));
+
 
     }
 
     static class ViewHolder {
         TextView headlineView;
         TextView authorView;
-        NetworkImageView imageView;
+        ImageView imageView;
     }
 }
 

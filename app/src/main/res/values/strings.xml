@@ -24,5 +24,6 @@
     <string name="title_activity_articles_list">All Articles</string>
     <string name="title_feed"></string>
     <string name="title_activity_webview">Webview</string>
+    <string name="title_activity_feedback_main">FeedbackMain</string>
 
 </resources>

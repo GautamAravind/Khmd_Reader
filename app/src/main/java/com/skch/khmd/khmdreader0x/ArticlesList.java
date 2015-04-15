@@ -29,6 +29,14 @@ import java.util.ArrayList;
 
 public class ArticlesList extends ActionBarActivity {
 
+
+
+    /*
+    *
+    *           Redundant Activity. To be used if using fragments and if everything is a child of Main Activity
+    *
+    * */
+
     private Toolbar toolbar;
     private ArrayList<FeedItem> feedList = null;
     private ProgressBar progressbar = null;
@@ -53,16 +61,16 @@ public class ArticlesList extends ActionBarActivity {
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
 
     }
-    public void getJson(){
+
+    public void getJson() {
 
         String url = "http://pipes.yahoo.com/pipes/pipe.run?_id=b7836ddf37201097635727c10845d841&_render=JSON";
 
-        JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET,url, new Response.Listener<JSONObject>() {
+        JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 //if valid json, parse it
                 parseJson(response);
-                //update the listview
                 updateList();
             }
         }, new Response.ErrorListener() {
@@ -81,7 +89,7 @@ public class ArticlesList extends ActionBarActivity {
 
     public void parseJson(JSONObject json) {
         JSONObject items = null;
-        if(json == null) {
+        if (json == null) {
 
             return;
         }
@@ -110,7 +118,8 @@ public class ArticlesList extends ActionBarActivity {
                         JSONObject thumb = post.getJSONObject("media:thumbnail");
                         item.setAttachmentUrl(thumb.getString("url"));
                     } else {
-                        item.setAttachmentUrl("http://lh3.googleusercontent.com/-L-SGKiNt3ZQ/VJBN4QRpmYI/AAAAAAAAMm8/1CgVgSu9vL4/s72-c/blogger-image--823560845.jpg");
+                        item.setAttachmentUrl(null);
+
                     }
 
 

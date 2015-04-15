@@ -1,16 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.skch.khmd.khmdreader0x.Webview">
+    tools:context="com.skch.khmd.khmdreader0x.FeedbackMain">
     <item
         android:id="@+id/action_settings"
-        android:orderInCategory="200"
+        android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/sendFeedback"
-        android:orderInCategory="100"
-        android:title="Send Feedback"
-        app:showAsAction="always" />
-
 </menu>

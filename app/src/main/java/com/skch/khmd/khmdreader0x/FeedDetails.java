@@ -9,21 +9,16 @@ import android.text.Html;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ImageView;
+import android.view.View;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
 import com.skch.khmd.khmdreader0x.model.FeedItem;
 
 
 public class FeedDetails extends ActionBarActivity {
-                
-    /*
-    Started from ArticleList.java 
-                        -> (AsyncTask) DownLoadFilesTask().execute(url)
-                        -> onPostExecute();
-                        -> parseJson(json);
-                        -> updateList(); 
-    */
+
 
     private Toolbar toolbar;
     private FeedItem feed;
@@ -32,25 +27,32 @@ public class FeedDetails extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed_details);
+
         feed = (FeedItem) this.getIntent().getSerializableExtra("feed");
         // Gets intent from ArticleList.java -> updateList();
 
+        NetworkImageView thumb = (NetworkImageView) findViewById(R.id.featuredImg);
+        TextView title = (TextView) findViewById(R.id.title);
+        title.setText(feed.getTitle());
+
+        TextView htmlTextView = (TextView) findViewById(R.id.content);
+        htmlTextView.setText(Html.fromHtml(feed.getContent(), null, null));
+
+
         if (feed != null) {
-            ImageView thumb = (ImageView) findViewById(R.id.featuredImg);
-            //new ImageDownloaderTask(thumb).execute(feed.getAttachmentUrl());
-            // AsyncTask to download image AFTER it opens FeedDetails and set in top bar
-
-            TextView title = (TextView) findViewById(R.id.title);
-            title.setText(feed.getTitle());
-
-            TextView htmlTextView = (TextView) findViewById(R.id.content);
-            htmlTextView.setText(Html.fromHtml(feed.getContent(), null, null));
+            if (feed.getAttachmentUrl() != null) {
+                thumb.setVisibility(View.VISIBLE);
+                title.setVisibility(View.VISIBLE);
+                ImageLoader loader = VolleySingleton.getInstance().getImageLoader();
+                thumb.setImageUrl(feed.getAttachmentUrl(), loader);
+            }
         }
+
 
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle(feed.getTitle());
+        getSupportActionBar().setTitle("The KHMD Blog");
 
 
     }
@@ -90,10 +92,5 @@ public class FeedDetails extends ActionBarActivity {
         startActivity(Intent.createChooser(sendIntent, "Share using"));
 
     }
-}
 
-/** / To Do                                                                            /**/
-/** / Change size of image view to display properly /**/
-/** / Remove title text view from below image /**/
-/** / Edit Thumbnail Logic : If thumbnail found, display /**/
-/** /                        Else set visibility of image view to GONE    /**/
+}
